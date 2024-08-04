@@ -5,8 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ModalDialogExample.Views"
         mc:Ignorable="d"
-        Title="MoldDetailDialog" Height="450" Width="800">
+        Title="{Binding DialogTitle}" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="{x:Type FrameworkElement}" x:Key="BaseStyle">
+            <Setter Property="Margin" Value="5 0 5 10"/>
+        </Style>
+        <Style TargetType="{x:Type TextBlock}" x:Key="HeaderTextblockStyle" BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding SelectedMold.Name}" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!-- Headers -->
+        <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource HeaderTextblockStyle}" Text="ID"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource HeaderTextblockStyle}" Text="Name"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource HeaderTextblockStyle}" Text="Description"/>
+        
+        
+        <!-- Content -->
+        <TextBlock Grid.Row="0" Grid.Column="2" Style="{StaticResource BaseStyle}" Text="{Binding SelectedMold.Id}"/>
+        <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource BaseStyle}" Text="{Binding SelectedMold.Name}"/>
+        <TextBox Grid.Row="2" Grid.Column="2" Style="{StaticResource BaseStyle}" Text="{Binding SelectedMold.Description}"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Right" Grid.ColumnSpan="2">
+            <Button Content="Cancel" Style="{StaticResource BaseStyle}"/>
+            <Button Content="Save" Style="{StaticResource BaseStyle}"/>
+        </StackPanel>
     </Grid>
 </Window>

@@ -25,5 +25,11 @@ namespace ModalDialogExample.ViewModels
 				OnPropertyChanged();
 			}
 		}
-	}
+
+        public string DialogTitle { get
+            {
+                return string.Format("Mold Details: {0}", SelectedMold.Name);
+            }
+        }
+    }
 }
