@@ -8,16 +8,14 @@ using System.Windows.Input;
 
 namespace ModalDialogExample.ViewModels.Commands
 {
-    internal class SaveMoldCommand : ISaveMoldCommand
+    internal class SaveMoldCommand : CommandBase, ISaveMoldCommand
     {
-        public event EventHandler? CanExecuteChanged;
-
-        public bool CanExecute(object? parameter)
+        protected override bool CanExecuteInternal(object? parameter)
         {
             return true;
         }
 
-        public void Execute(object? parameter)
+        protected override void ExecuteInternal(object? parameter)
         {
             MessageBox.Show("Saving");
         }

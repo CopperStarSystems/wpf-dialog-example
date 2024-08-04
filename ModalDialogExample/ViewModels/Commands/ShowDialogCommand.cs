@@ -10,16 +10,14 @@ using ModalDialogExample.Views;
 
 namespace ModalDialogExample.ViewModels.Commands
 {
-    internal class ShowDialogCommand : ICommand
+    internal class ShowDialogCommand : CommandBase
     {
-        public event EventHandler? CanExecuteChanged;
-
-        public bool CanExecute(object? parameter)
+        protected override bool CanExecuteInternal(object? parameter)
         {
             return parameter != null;
         }
 
-        public void Execute(object? parameter)
+        protected override void ExecuteInternal(object? parameter)
         {
             var mold = (Mold)parameter!;
             var saveCommand = new SaveMoldCommand();
