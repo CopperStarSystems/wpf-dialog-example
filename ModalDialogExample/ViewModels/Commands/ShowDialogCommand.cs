@@ -22,7 +22,9 @@ namespace ModalDialogExample.ViewModels.Commands
         public void Execute(object? parameter)
         {
             var mold = (Mold)parameter!;
-            var viewModel = new MoldDetailDialogViewModel(mold);
+            var saveCommand = new SaveMoldCommand();
+            var cancelCommand = new CancelCommand();
+            var viewModel = new MoldDetailDialogViewModel(mold, saveCommand, cancelCommand);
             var view = new MoldDetailDialog { DataContext = viewModel };    
             view.ShowDialog();
         }

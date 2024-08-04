@@ -1,4 +1,5 @@
 ﻿using ModalDialogExample.Models;
+using ModalDialogExample.ViewModels.Commands;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,9 +12,11 @@ namespace ModalDialogExample.ViewModels
 {
     internal class MoldDetailDialogViewModel : ViewModelBase
     {
-        public MoldDetailDialogViewModel(Mold mold)
+        public MoldDetailDialogViewModel(Mold mold, ISaveMoldCommand saveMoldCommand, ICancelCommand cancelCommand)
         {
             selectedMold = mold;
+            SaveCommand = saveMoldCommand;
+            CancelCommand = cancelCommand;
         }
 
         private Mold selectedMold;
