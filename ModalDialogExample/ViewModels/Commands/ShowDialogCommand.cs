@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using ModalDialogExample.Models;
+using ModalDialogExample.Views;
 
 namespace ModalDialogExample.ViewModels.Commands
 {
@@ -21,7 +22,8 @@ namespace ModalDialogExample.ViewModels.Commands
         public void Execute(object? parameter)
         {
             var mold = (Mold)parameter!;
-            MessageBox.Show(mold.Name);
+            var view = new MoldDetailDialog();
+            view.ShowDialog();
         }
     }
 }
