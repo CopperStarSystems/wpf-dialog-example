@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="MoldDetailDialog" Height="450" Width="800">
     <Grid>
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Hello</TextBlock>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding SelectedMold.Name}" />
     </Grid>
 </Window>
