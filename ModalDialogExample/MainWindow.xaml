@@ -7,13 +7,24 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
-        <Style TargetType="{x:Type Button}" x:Key="LocalButtonStyle">
-            <Setter Property="Background" Value="LightGreen"/>
+        <Style TargetType="{x:Type Control}" x:Key="BaseControlStyle">
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseControlStyle}" x:Key="LocalButtonStyle">
+            <Setter Property="Background" Value="LightGreen"/>
+        </Style>
+        <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource BaseControlStyle}" x:Key="LocalComboboxStyle"/>
     </Window.Resources>
     <Grid>
-        <Button Content="Click Me" Style="{StaticResource LocalButtonStyle}" Command="{Binding ShowDialogCommand}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ComboBox ItemsSource="{Binding AvailableMolds}" SelectedItem="{Binding SelectedMold}" Style="{StaticResource LocalComboboxStyle}" DisplayMemberPath="Name"/>
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <Button Content="Click Me" Style="{StaticResource LocalButtonStyle}" Command="{Binding ShowDialogCommand}"/>
+            <TextBlock Text="{Binding SelectedMold.Name}"/>
+        </StackPanel>
     </Grid>
 </Window>

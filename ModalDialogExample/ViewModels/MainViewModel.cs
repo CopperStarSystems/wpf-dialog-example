@@ -13,12 +13,23 @@ namespace ModalDialogExample.ViewModels
 {
     internal class MainViewModel : ViewModelBase
     {
-        Mold[] exampleMolds =
-        {
-            new Mold(),
-            new Mold(),
-            new Mold()
-        };
+        readonly Mold[] exampleMolds =
+        [
+            new() {
+                Id = 1,
+                Name = "Mold 1"
+            },
+            new()
+            {
+                Id = 2,
+                Name = "Mold 2"
+            },
+            new()
+            {
+                Id= 3,
+                Name = "Mold 3"
+            }
+        ];
 
         public MainViewModel()
         {
@@ -31,6 +42,17 @@ namespace ModalDialogExample.ViewModels
 
 
         public ObservableCollection<Mold> AvailableMolds { get; }
+
+        private Mold selectedMold;
+
+        public Mold SelectedMold
+        {
+            get { return selectedMold; }
+            set { 
+                selectedMold = value;
+                OnPropertyChanged();
+            }
+        }
 
 
         public ICommand ShowDialogCommand { get; }
