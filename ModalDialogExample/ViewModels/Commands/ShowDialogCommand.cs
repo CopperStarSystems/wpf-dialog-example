@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using ModalDialogExample.Models;
 
 namespace ModalDialogExample.ViewModels.Commands
 {
@@ -14,12 +15,13 @@ namespace ModalDialogExample.ViewModels.Commands
 
         public bool CanExecute(object? parameter)
         {
-            return true;
+            return parameter != null;
         }
 
         public void Execute(object? parameter)
         {
-           throw new NotImplementedException();
+            var mold = (Mold)parameter!;
+            MessageBox.Show(mold.Name);
         }
     }
 }

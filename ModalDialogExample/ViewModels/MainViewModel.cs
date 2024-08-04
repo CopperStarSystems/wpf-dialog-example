@@ -43,9 +43,9 @@ namespace ModalDialogExample.ViewModels
 
         public ObservableCollection<Mold> AvailableMolds { get; }
 
-        private Mold selectedMold;
+        private Mold? selectedMold;
 
-        public Mold SelectedMold
+        public Mold? SelectedMold
         {
             get { return selectedMold; }
             set { 

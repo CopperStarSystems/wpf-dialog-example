@@ -23,7 +23,7 @@
         </Grid.RowDefinitions>
         <ComboBox ItemsSource="{Binding AvailableMolds}" SelectedItem="{Binding SelectedMold}" Style="{StaticResource LocalComboboxStyle}" DisplayMemberPath="Name"/>
         <StackPanel Grid.Row="1" Orientation="Vertical">
-            <Button Content="Click Me" Style="{StaticResource LocalButtonStyle}" Command="{Binding ShowDialogCommand}"/>
+            <Button Content="Click Me" Style="{StaticResource LocalButtonStyle}" Command="{Binding ShowDialogCommand}" CommandParameter="{Binding SelectedMold}"/>
             <TextBlock Text="{Binding SelectedMold.Name}"/>
         </StackPanel>
     </Grid>
