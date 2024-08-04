@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModalDialogExample.ViewModels
 {
-    internal class MoldDetailDialogViewModel : INotifyPropertyChanged
+    internal class MoldDetailDialogViewModel : ViewModelBase
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace ModalDialogExample.ViewModels
 {
-    internal class MainViewModel : INotifyPropertyChanged
+    internal class MainViewModel : ViewModelBase
     {
         Mold[] exampleMolds =
         {
@@ -32,7 +32,6 @@ namespace ModalDialogExample.ViewModels
 
         public ObservableCollection<Mold> AvailableMolds { get; }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
 
         public ICommand ShowDialogCommand { get; }
     }
