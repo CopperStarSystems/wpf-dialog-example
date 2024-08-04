@@ -10,6 +10,13 @@ namespace ModalDialogExample.ViewModels.Commands
 {
     internal class SaveMoldCommand : CommandBase, ISaveMoldCommand
     {
+        Window dialogView;
+
+        public SaveMoldCommand(Window dialogView)
+        {
+            this.dialogView = dialogView;
+        }
+
         protected override bool CanExecuteInternal(object? parameter)
         {
             return true;
@@ -17,7 +24,7 @@ namespace ModalDialogExample.ViewModels.Commands
 
         protected override void ExecuteInternal(object? parameter)
         {
-            MessageBox.Show("Saving");
+            dialogView.Close();
         }
     }
 }

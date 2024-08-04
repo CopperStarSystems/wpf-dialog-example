@@ -20,10 +20,12 @@ namespace ModalDialogExample.ViewModels.Commands
         protected override void ExecuteInternal(object? parameter)
         {
             var mold = (Mold)parameter!;
-            var saveCommand = new SaveMoldCommand();
+            var view = new MoldDetailDialog();
+            var saveCommand = new SaveMoldCommand(view);
             var cancelCommand = new CancelCommand();
             var viewModel = new MoldDetailDialogViewModel(mold, saveCommand, cancelCommand);
-            var view = new MoldDetailDialog { DataContext = viewModel };    
+            view.DataContext = viewModel;
+
             view.ShowDialog();
         }
     }
