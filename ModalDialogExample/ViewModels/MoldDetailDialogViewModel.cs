@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace ModalDialogExample.ViewModels
 {
@@ -31,5 +32,9 @@ namespace ModalDialogExample.ViewModels
                 return string.Format("Mold Details: {0}", SelectedMold.Name);
             }
         }
+
+        public ICommand SaveCommand { get; }
+
+        public ICommand CancelCommand { get; }
     }
 }

@@ -38,8 +38,8 @@
         <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource BaseStyle}" Text="{Binding SelectedMold.Name}"/>
         <TextBox Grid.Row="2" Grid.Column="2" Style="{StaticResource BaseStyle}" Text="{Binding SelectedMold.Description}"/>
         <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Right" Grid.ColumnSpan="2">
-            <Button Content="Cancel" Style="{StaticResource BaseStyle}"/>
-            <Button Content="Save" Style="{StaticResource BaseStyle}"/>
+            <Button Content="Cancel" Style="{StaticResource BaseStyle}" Command="{Binding CancelCommand}"/>
+            <Button Content="Save" Style="{StaticResource BaseStyle}" Command="{Binding SaveCommand}"/>
         </StackPanel>
     </Grid>
 </Window>
