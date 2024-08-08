@@ -12,16 +12,22 @@ namespace ModalDialogExample.ViewModels
 {
     internal class MoldDetailDialogViewModel : ViewModelBase
     {
+        private Mold selectedMold;
+        private Mold originalMold;
+
         public MoldDetailDialogViewModel(Mold mold, ISaveMoldCommand saveMoldCommand, ICancelCommand cancelCommand)
         {
             selectedMold = mold;
+            originalMold = mold.Clone();
+
             SaveCommand = saveMoldCommand;
             CancelCommand = cancelCommand;
+            CancelCommand.Cancel += CancelEdit;
         }
 
-        private Mold selectedMold;
+        
 
-		public Mold SelectedMold
+        public Mold SelectedMold
 		{
 			get { return selectedMold; }
 			set { 
@@ -38,6 +44,17 @@ namespace ModalDialogExample.ViewModels
 
         public ICommand SaveCommand { get; }
 
-        public ICommand CancelCommand { get; }
+        public ICancelCommand CancelCommand { get; }
+
+        private void CancelEdit(object? sender, EventArgs e)
+        {
+            ResetModelValues();
+        }
+
+        private void ResetModelValues()
+        {
+            selectedMold.Name = originalMold!.Name;
+            selectedMold.Description = originalMold!.Description;
+        }
     }
 }

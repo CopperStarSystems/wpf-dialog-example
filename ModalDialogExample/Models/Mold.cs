@@ -12,5 +12,10 @@ namespace ModalDialogExample.Models
         public string? Name { get; set; }
 
         public string? Description { get; set; }
+
+        public Mold Clone()
+        {
+            return (Mold)this.MemberwiseClone();
+        }
     }
 }

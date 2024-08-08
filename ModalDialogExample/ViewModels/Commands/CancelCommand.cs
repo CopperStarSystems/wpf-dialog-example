@@ -1,15 +1,24 @@
-﻿using System;
+﻿using ModalDialogExample.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
 
 namespace ModalDialogExample.ViewModels.Commands
 {
     internal class CancelCommand : CommandBase, ICancelCommand
     {
+        private readonly Window dialogView;
+
+        public CancelCommand(Window dialogView)
+        {
+            this.dialogView = dialogView;
+        }
+
+        public event EventHandler? Cancel;
+
         protected override bool CanExecuteInternal(object? parameter)
         {
             return true;
@@ -17,7 +26,13 @@ namespace ModalDialogExample.ViewModels.Commands
 
         protected override void ExecuteInternal(object? parameter)
         {
-            MessageBox.Show("Cancelling");
+            RaiseCancelEvent();
+            dialogView.Close();
+        }
+
+        void RaiseCancelEvent()
+        {
+            Cancel?.Invoke(this, EventArgs.Empty);
         }
     }
 }

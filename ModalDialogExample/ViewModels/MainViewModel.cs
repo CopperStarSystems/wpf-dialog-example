@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace ModalDialogExample.ViewModels
 {
-    internal class MainViewModel : ViewModelBase
+    internal class MainViewModel : ViewModelBase, IMainViewModel
     {
         readonly Mold[] exampleMolds =
         [
@@ -48,7 +48,8 @@ namespace ModalDialogExample.ViewModels
         public Mold? SelectedMold
         {
             get { return selectedMold; }
-            set { 
+            set
+            {
                 selectedMold = value;
                 OnPropertyChanged();
             }
